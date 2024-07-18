@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import './globals.css'
+import Navbar from '@/components/Navbar'
 
-const inter = Inter({ subsets: ['latin'] })
+const font = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+})
 
 export const metadata: Metadata = {
   title: 'Milo Social Media App',
@@ -16,7 +20,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body className={font.className}>
+        <div className='w-full bg-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64'>
+          <Navbar />
+        </div>
+        <div className='bg-slate-100 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64'>
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
